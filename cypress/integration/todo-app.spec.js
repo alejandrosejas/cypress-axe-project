@@ -17,4 +17,16 @@ describe("Todo application", () => {
   it("3️⃣ should ONLY TEST specific elements from the page", () => {
     cy.checkA11y(".learn");
   });
+
+  it("4️⃣ should ONLY include Serious and Critical impact issues", () => {
+    cy.checkA11y(null, { includedImpacts: ["critical", "serious"] });
+  });
+
+  it("5️⃣ should exclude specific Accessibility rules", () => {
+    cy.checkA11y(null, {
+      rules: {
+        "color-contrast": { enabled: false },
+      },
+    });
+  });
 });
